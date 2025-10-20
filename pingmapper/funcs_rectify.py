@@ -233,36 +233,37 @@ def smoothTrackline(projDir='', x_offset='', y_offset='', nchunk ='', cog=True, 
 
         i = 1
         t = 0
-        while i <= max(chunks):
+        if chunks.any() == 0:
+            while i <= max(chunks):
 
-        # for i in chunks:
+            # for i in chunks:
 
-            # # Get second to last row of previous chunk
-            # lastRow = sDF[sDF['chunk_id'] == i-1].iloc[[-2]]
-            # Get index of first row of current chunk
-            curRow = sDF[sDF['chunk_id'] == i].iloc[[0]]
-            curTransect = curRow['transect'].values[0]
-            curRow = curRow.index[0]
-            
-            if curTransect == t:
-                # Get second to last row of previous chunk
-                lastRow = sDF[sDF['chunk_id'] == i-1].iloc[[-2]]
+                # # Get second to last row of previous chunk
+                # lastRow = sDF[sDF['chunk_id'] == i-1].iloc[[-2]]
+                # Get index of first row of current chunk
+                curRow = sDF[sDF['chunk_id'] == i].iloc[[0]]
+                curTransect = curRow['transect'].values[0]
+                curRow = curRow.index[0]
+                
+                if curTransect == t:
+                    # Get second to last row of previous chunk
+                    lastRow = sDF[sDF['chunk_id'] == i-1].iloc[[-2]]
 
-                # Update current chunks first row from lastRow
-                sDF.at[curRow, "lons"] = lastRow["lons"]
-                sDF.at[curRow, "lats"] = lastRow["lats"]
-                sDF.at[curRow, "utm_es"] = lastRow["utm_es"]
-                sDF.at[curRow, "utm_ns"] = lastRow["utm_ns"]
-                sDF.at[curRow, "cog"] = lastRow["cog"]
-                sDF.at[curRow, "instr_heading"] = lastRow["instr_heading"]
-                # sDF.at[curRow, 'pixM'] = lastRow['pixM']
+                    # Update current chunks first row from lastRow
+                    sDF.at[curRow, "lons"] = lastRow["lons"]
+                    sDF.at[curRow, "lats"] = lastRow["lats"]
+                    sDF.at[curRow, "utm_es"] = lastRow["utm_es"]
+                    sDF.at[curRow, "utm_ns"] = lastRow["utm_ns"]
+                    sDF.at[curRow, "cog"] = lastRow["cog"]
+                    sDF.at[curRow, "instr_heading"] = lastRow["instr_heading"]
+                    # sDF.at[curRow, 'pixM'] = lastRow['pixM']
 
-                del lastRow
-            else:
-                t += 1
+                    del lastRow
+                else:
+                    t += 1
 
-            i+=1
-        del curRow, i
+                i+=1
+            del curRow, i
 
         son0.smthTrk = sDF # Store smoothed trackline coordinates in rectObj.
         
