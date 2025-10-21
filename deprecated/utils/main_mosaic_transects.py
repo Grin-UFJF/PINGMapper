@@ -39,7 +39,7 @@ sys.path.insert(0, 'src')
 from funcs_common import *
 from class_sonObj import sonObj
 from class_rectObj import rectObj
-from class_portstarObj import portstarObj
+from pingmapper.class_portstarObj import portstarObj
 
 import time
 import datetime

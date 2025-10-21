@@ -9,7 +9,7 @@ import sys, os
 sys.path.insert(0, 'src')
 
 from class_mapSubstrateObj import mapSubObj
-from class_portstarObj import portstarObj
+from pingmapper.class_portstarObj import portstarObj
 from joblib import Parallel, delayed, cpu_count
 from glob import glob
 import numpy as np
@@ -82,16 +82,6 @@ def npzAvg(k, v, npz_raw, outDir_npz, nchunk):
         # Get classified smooth fines from EGN
         fines_flat = np.where(npz_1_class == 2, 1, 0)
         fines_flat_mask = np.where(npz_1_class == 2, 0, 1)
-
-        # Get classified smooth fines from Raw
-        npz_2_class = np.argmax(npz_2, -1)
-        fines_flat_2 = np.where(npz_2_class == 2, 1, 0)
-        fines_flat += fines_flat_2
-        fines_flat = np.where(fines_flat > 0, 1, 0)
-
-        fines_flat_mask = np.where(fines_flat > 0, 0, 1)
-
-        
 
         # Get classified other from EGN
         other = np.where(npz_1_class == 6, 1, 0)

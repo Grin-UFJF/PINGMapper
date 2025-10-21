@@ -23,7 +23,7 @@ import geopandas as gpd
 import pandas as pd
 from glob import glob
 from class_mapSubstrateObj import mapSubObj
-from class_portstarObj import portstarObj
+from pingmapper.class_portstarObj import portstarObj
 from funcs_common import *
 from shapely import Point, LineString, MultiPolygon, MultiLineString
 from shapely.ops import split

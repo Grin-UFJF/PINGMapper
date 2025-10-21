@@ -19,7 +19,7 @@ sys.path.append(PACKAGE_DIR)
 from pingmapper.funcs_common import *
 from pingmapper.main_readFiles import read_master_func
 from pingmapper.main_rectify import rectify_master_func
-from pingmapper.main_mapSubstrate import map_master_func
+from deprecated.main_mapSubstrate import map_master_func
 
 import json
 import pandas as pd
