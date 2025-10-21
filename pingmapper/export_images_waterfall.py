@@ -18,15 +18,16 @@ with open(paramsFile, 'r') as f:
 params.pop('inDir', None)  # Remove inDir if exists
 params.pop('filter_table', None)  # Remove inDir if exists
 params['project_mode'] = 1  # 0==NEW PROJECT; 1==OVERWRITE MODE
-params['egn_stretch'] = "Min-Max"  # "Percent Clip", "Min-Max" or "None"
+params['egn'] = False
+params['egn_stretch'] = "Percent Clip"  # "Percent Clip", "Min-Max" or "None"
 params['egn_stretch_factor'] = 0.5
 params['wcp'] = True
 params['wcm'] = False
 params['wcr'] = False
 params['rect_wcp'] = False
 params['rect_wcr'] = False
-params['sonogram_colorMap'] = 'copper_r'
-params['son_colorMap'] = 'Grey_r'
+params['sonogram_colorMap'] = 'copper'
+params['son_colorMap'] = 'copper'
 params['pred_sub'] = False
 
 # EGN Stretch
@@ -73,7 +74,7 @@ elif map_mosaic == 'VRT':
     params['map_mosaic'] = 2
 
 # Path to data/output
-inFile = "/home/vini/PINGMapper/Sonar/Rec00004.DAT"
+inFile = "/home/vini/PINGMapper/Sonar/Rec00005.DAT"
 sonPath = inFile.split('.DAT')[0]
 sonFiles = [os.path.join(sonPath, f) for f in sorted(
     os.listdir(sonPath)) if f.endswith('.SON')]
